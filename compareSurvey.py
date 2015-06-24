@@ -59,7 +59,7 @@ def plotCompare(ideal,surv,name):
 
 
 
-def getSensorFramePos(lines):
+def getSensorPos(lines):
 
     res = {}
     for line in lines:
@@ -72,7 +72,7 @@ def getSensorFramePos(lines):
     return  res
 
 
-def getPinFramePos(lines):
+def getPinPos(lines):
     res = {}
     for line in lines:
         m = re.search('module_L([1-6])([tb]) (.*) base.* \[(.*)\] ',line)
@@ -107,14 +107,8 @@ sensorIdeal = getSensorPos(linesIdeal)
 pinSurveyed = getPinPos(linesSurvey)    
 pinIdeal = getPinPos(linesIdeal)    
 
-
-channelIdeal = getUChannelPos(linesIdeal)    
 channelSurveyed = getUChannelPos(linesSurvey)    
-
-#print 'hej'
-#print pinFrameIdeal
-
-
+channelIdeal = getUChannelPos(linesIdeal)    
 
 printCompare(sensorIdeal,sensorSurveyed,'sensorDiff')
 plotCompare(sensorIdeal,sensorSurveyed,'sensorDiff')
