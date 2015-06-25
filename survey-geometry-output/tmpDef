@@ -1,0 +1,54 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building detector-model 3.3.3-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hps-detector-model ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/phansson/work/HPS/software/kepler2/hps-java/detector-model/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.2:compile (default-compile) @ hps-detector-model ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-antrun-plugin:1.7:run (default) @ hps-detector-model ---
+[INFO] Executing tasks
+
+main:
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ hps-detector-model ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.2:testCompile (default-testCompile) @ hps-detector-model ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.17:test (default-test) @ hps-detector-model ---
+[WARNING] The parameter forkMode is deprecated since version 2.14. Use forkCount and reuseForks instead.
+[INFO] Surefire report directory: /Users/phansson/work/HPS/software/kepler2/hps-java/detector-model/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.lcsim.geometry.compact.converter.lcdd.HPSTracker2014v1LCDDTest
+Thu Jun 25 09:05:24 PDT 2015 org.lcsim.geometry.compact.converter.HPSTrackerBuilder <init>
+INFO: mille parameters will be read from compact.xml file
+HPSTracker2014v1LCDDBuilder: Built 192 LCDD geometry objects
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.082 sec - in org.lcsim.geometry.compact.converter.lcdd.HPSTracker2014v1LCDDTest
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.981s
+[INFO] Finished at: Thu Jun 25 09:05:25 PDT 2015
+[INFO] Final Memory: 13M/310M
+[INFO] ------------------------------------------------------------------------
