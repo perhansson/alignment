@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import sys,string, re, subprocess
+import sys,string, re, subprocess,os
 from ROOT import TCanvas, TGraph
 
 
@@ -72,6 +72,17 @@ def getSensorPos(lines):
     return  res
 
 
+def getSensorPosGlobal(lines):
+
+    res = {}
+    for line in lines:
+        m = re.match('^module_L([1-6])([tb])_halfmodule_(\S+)_active\s.*tracking.*\[(.*)\].*mm.*',line)
+        if m!=None:
+            print line
+            res[ m.group(1)+m.group(2)+'_'+m.group(3) ] = m.group(4)
+    return  res
+
+
 def getPinPos(lines):
     res = {}
     for line in lines:
@@ -98,8 +109,12 @@ fd_lines = fd.readlines()
 linesSurvey = list(fs_lines)
 linesIdeal = list(fd_lines)
 
+tag1 = os.path.splitext(os.path.basename(sys.argv[1]))[0]
+tag2 = os.path.splitext(os.path.basename(sys.argv[2]))[0]
+tag = tag1 + '-vs-' + tag2
 
-
+sensorSurveyedGlobal = getSensorPosGlobal(linesSurvey)
+sensorIdealGlobal = getSensorPosGlobal(linesIdeal)
 
 sensorSurveyed = getSensorPos(linesSurvey)    
 sensorIdeal = getSensorPos(linesIdeal)    
@@ -110,14 +125,17 @@ pinIdeal = getPinPos(linesIdeal)
 channelSurveyed = getUChannelPos(linesSurvey)    
 channelIdeal = getUChannelPos(linesIdeal)    
 
-printCompare(sensorIdeal,sensorSurveyed,'sensorDiff')
-plotCompare(sensorIdeal,sensorSurveyed,'sensorDiff')
+printCompare(sensorIdeal,sensorSurveyed,'sensorDiff-'+tag)
+plotCompare(sensorIdeal,sensorSurveyed,'sensorDiff-'+tag)
 
-printCompare(pinIdeal,pinSurveyed,'pinDiff')
-plotCompare(pinIdeal,pinSurveyed,'pinDiff')
+printCompare(pinIdeal,pinSurveyed,'pinDiff-'+tag)
+plotCompare(pinIdeal,pinSurveyed,'pinDiff-'+tag)
 
-printCompare(channelIdeal,channelSurveyed,'channelDiff')
-plotCompare(channelIdeal,channelSurveyed,'channelDiff')
+printCompare(channelIdeal,channelSurveyed,'channelDiff-'+tag)
+plotCompare(channelIdeal,channelSurveyed,'channelDiff-'+tag)
+
+printCompare(sensorIdealGlobal,sensorSurveyedGlobal,'sensorDiffGlobal-'+tag)
+plotCompare(sensorIdealGlobal,sensorSurveyedGlobal,'sensorDiffGlobal-'+tag)
 
 
 fs.close()
